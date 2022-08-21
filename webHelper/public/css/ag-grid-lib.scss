@@ -1,0 +1,54 @@
+@import '~ag-grid-community/src/styles/ag-grid.scss';
+@import '~ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss';
+
+// TODO: Change this to live env once code is ready for deployment.
+$baseurl: '../images/';
+
+@mixin icon-background($icon, $size) {
+  background: url($icon) no-repeat;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: $size $size;
+  height: $size;
+  width: $size;
+}
+
+.ag-theme-alpine {
+  @include ag-theme-alpine(
+    (
+      row-border-color: transparent,
+      row-hover-color: null,
+      checkbox-checked-color: #707070,
+      range-selection-border-color: #707070,
+      range-selection-background-color: #ffffff,
+    )
+  );
+
+  // Sort - asc order icon
+  .ag-icon.ag-icon-asc {
+    @include icon-background($baseurl + 'asc-sort.svg', 14px);
+    margin-top: 3px;
+    &:before {
+      content: '' !important;
+    }
+  }
+
+  // Sort - desc order icon
+  .ag-icon.ag-icon-desc {
+    @include icon-background($baseurl + 'desc-sort.svg', 14px);
+    margin-top: 3px;
+    &:before {
+      content: '' !important;
+    }
+  }
+
+  // Sort - default icon (unsorted order)
+  .ag-icon.ag-icon-none {
+    @include icon-background($baseurl + 'none.svg', 14px);
+    margin-top: 3px;
+    &:before {
+      content: '' !important;
+    }
+  }
+}

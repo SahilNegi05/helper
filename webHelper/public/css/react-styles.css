@@ -1,0 +1,108 @@
+*{
+  outline: unset !important;
+}
+
+.slick-prev:before {
+  content: "\2039"!important;
+  margin-top: -7px !important;
+}
+
+.slick-next:before {
+  content: "\203A"!important;
+  margin-top: -7px !important;
+}
+
+
+.ag-grid-custom-height {
+  height: 600px;
+  width: 100% !important;
+}
+
+.ag-cell-focus, .ag-cell {
+  border: none !important;
+}
+
+.ag-row {
+  cursor: pointer;
+}
+
+
+/** Table Header Buttons */
+.btn-pill.btn-shadow.btn-wide.btn.btn-sm.btn-danger.spacing{
+  margin: 0px 8px;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.image.my-2.pdf {
+  cursor: pointer;
+}
+
+.text-info.readmore {
+  cursor: pointer;
+}
+
+.upload-inline.dragdrop {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #ECECEE;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.upload-inline.dragdrop .drag-drop-text {
+  margin-top: 10px;
+}
+
+
+/** AG Grid **/
+
+.ag-header-cell-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #3f6ad8;
+}
+.ag-header-viewport {
+  background: #fff !important;
+}
+.ag-header-row.ag-header-row-column {
+  height: 35px !important;
+}
+.ag-header-row.ag-header-row-floating-filter {
+  top: 35px !important;
+  height: 35px !important;
+}
+.ag-header.ag-focus-managed {
+  height: 77px !important;
+  min-height: 77px !important;
+}
+.ag-header-row.ag-header-row-floating-filter .ag-header-cell {
+  padding-top: 6px;
+}
+.ag-body-viewport.ag-layout-normal .ag-center-cols-container .ag-row-even {
+  background-color: rgba(0,0,0,0.03);
+}
+.ag-body-viewport.ag-layout-normal .ag-center-cols-container .ag-row-odd {
+  background-color: #fff;
+}
+.ag-body-viewport.ag-layout-normal .ag-center-cols-container > [role="row"]:hover {
+  background-color: #e0f3ff !important;
+}
+.image.video-box > div[style] {
+  width: initial !important;
+  height: initial !important;
+}
+.ag-hidden {
+   display: block !important; 
+}
+.ag-icon.ag-icon-filter{
+  display: none!important;
+}
+.ag-theme-alpine .ag-ltr .ag-cell,.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell  {
+  border-right: 1px solid #e9ecef!important;
+}

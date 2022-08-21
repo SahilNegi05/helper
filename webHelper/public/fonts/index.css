@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "DosisExtraLight";
+  src: url("./Dosis-ExtraLight.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "DosisLight";
+  src: url("./Dosis-Light.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "DosisRegular";
+  src: url("./Dosis-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "DosisMedium";
+  src: url("./Dosis-Medium.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "DosisSemiBold";
+  src: url("./Dosis-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "DosisBold";
+  src: url("./Dosis-Bold.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "DosisExtraBold";
+  src: url("./Dosis-ExtraBold.ttf") format("truetype");
+  font-weight: normal;
+}

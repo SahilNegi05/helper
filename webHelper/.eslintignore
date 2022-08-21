@@ -1,0 +1,5 @@
+node_modules/
+__tests__/
+coverage/
+service-worker.js
+.eslintrc.js
