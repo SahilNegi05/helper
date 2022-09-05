@@ -143,3 +143,82 @@ function Post(props) {
       </div>
     );
   }
+
+
+
+  function toDataURL(src, callback, outputFormat) {
+    let image = new Image();
+    image.crossOrigin = 'Anonymous';
+    image.onload = function () {
+      let canvas = document.createElement('canvas');
+      let ctx = canvas.getContext('2d');
+      let dataURL;
+      canvas.height = this.naturalHeight;
+      canvas.width = this.naturalWidth;
+      ctx.drawImage(this, 0, 0);
+      dataURL = canvas.toDataURL(outputFormat);
+      callback(dataURL);
+    };
+    image.src = src;
+    if (image.complete || image.complete === undefined) {
+      image.src = "data:image/gif;base64, R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+      image.src = src;
+    }
+  }
+  toDataURL('https://www.gravatar.com/avatar/0c6523b4d3f60hj548962bfrg2350',
+    function (dataUrl) {
+      console.log('RESULT:', dataUrl)
+    }
+  )
+  1//https://www.w3docs.com/snippets/javascript/how-to-convert-the-image-into-a-base64-string-using-javascript.html
+
+  2//https://github.com/codefreeeze/filters-materialui-react/tree/master/src
+  3//const applyFilters = () => {
+    let updatedList = dataList;
+
+    // Rating Filter
+    if (selectedRating) {
+      updatedList = updatedList.filter(
+        (item) => parseInt(item.rating) === parseInt(selectedRating)
+      );
+    }
+
+    // Category Filter
+    if (selectedCategory) {
+      updatedList = updatedList.filter(
+        (item) => item.category === selectedCategory
+      );
+    }
+
+    // Cuisine Filter
+    const cuisinesChecked = cuisines
+      .filter((item) => item.checked)
+      .map((item) => item.label.toLowerCase());
+
+    if (cuisinesChecked.length) {
+      updatedList = updatedList.filter((item) =>
+        cuisinesChecked.includes(item.cuisine)
+      );
+    }
+
+    // Search Filter
+    if (searchInput) {
+      updatedList = updatedList.filter(
+        (item) =>
+          item.title.toLowerCase().search(searchInput.toLowerCase().trim()) !==
+          -1
+      );
+    }
+
+    // Price Filter
+    const minPrice = selectedPrice[0];
+    const maxPrice = selectedPrice[1];
+
+    updatedList = updatedList.filter(
+      (item) => item.price >= minPrice && item.price <= maxPrice
+    );
+
+    setList(updatedList);
+
+    !updatedList.length ? setResultsFound(false) : setResultsFound(true);
+  };
