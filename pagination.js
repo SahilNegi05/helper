@@ -222,3 +222,108 @@ function Post(props) {
 
     !updatedList.length ? setResultsFound(false) : setResultsFound(true);
   };
+  
+  
+  
+  const path = require("path");
+const webpack = require("webpack");
+
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+
+const BrowserifyZlib = require("browserify-zlib");
+
+const { name: NAME, version: VERSION } = require("./package.json");
+
+module.exports = {
+  entry: path.resolve(__dirname, "./src/index.js"),
+
+  output: {
+    publicPath: "",
+    chunkFilename: "[id].js",
+    filename: `${NAME}-${VERSION}.js`,
+    path: path.resolve(__dirname, "./build"),
+    filename: "bundle.js",
+  },
+
+  resolve: {
+    extensions: [".jsx", ".js"],
+  },
+
+  devServer: {
+    historyApiFallback: true,
+    port: 3010,
+    hot: true,
+  },
+
+  optimization: {
+    chunkIds: "total-size",
+    concatenateModules: true,
+    minimize: true,
+    minimizer: [new TerserWebpackPlugin({ test: /\.js(\?.*)?$/i })],
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|otf|ttf|woff|woff2|eot)$/i,
+        type: "asset/resource",
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              outputPath: "images",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "./public/index.html"),
+      favicon: "./public/logo512.png",
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: `${NAME}-${VERSION}.css`,
+      linkType: "text/css",
+    }),
+
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+      zlib: BrowserifyZlib,
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public"),
+          to: path.resolve(__dirname, "build"),
+          globOptions: {
+            ignore: ["**/index.html"],
+          },
+        },
+      ],
+    }),
+  ],
+
+  target: "web",
+};
+
+  
+  
